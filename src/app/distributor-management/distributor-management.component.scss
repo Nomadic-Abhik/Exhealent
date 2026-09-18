@@ -1,0 +1,110 @@
+:host {
+  display: block;
+  padding: 2rem;
+}
+
+.distributor-management {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-header h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 1.7rem;
+}
+
+.search-input {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  min-width: 220px;
+}
+
+.add-btn,
+.edit-btn,
+.pay-btn {
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.add-btn {
+  padding: 0.75rem 1rem;
+  background: #2563eb;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  max-height: 430px;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.distributor-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 1100px;
+}
+
+.distributor-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f3f4f6;
+  color: #111827;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.distributor-table th,
+.distributor-table td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.8rem 0.75rem;
+  text-align: left;
+  font-size: 0.92rem;
+  white-space: nowrap;
+}
+
+.distributor-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.action-cell {
+  display: table-cell;
+}
+
+.edit-btn,
+.pay-btn {
+  padding: 0.45rem 0.8rem;
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.edit-btn {
+  background: #10b981;
+}
+
+.pay-btn {
+  background: #f59e0b;
+}

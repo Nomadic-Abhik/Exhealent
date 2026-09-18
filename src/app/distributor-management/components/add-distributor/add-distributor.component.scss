@@ -1,0 +1,77 @@
+.add-distributor {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  background: #f9fafb;
+  max-width: 100%;
+}
+
+.add-distributor h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.distributor-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field-group label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.field-group input,
+.field-group select {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.field-group input[readonly] {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.submit-btn,
+.pay-btn {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background: #2563eb;
+}
+
+.submit-btn:hover {
+  background: #1d4ed8;
+}
+
+.pay-btn {
+  background: #f59e0b;
+}
+
+.pay-btn:hover {
+  background: #d97706;
+}

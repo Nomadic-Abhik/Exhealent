@@ -1,0 +1,58 @@
+<section class="distributor-management">
+  <div class="section-header">
+    <h2>Distributor Management</h2>
+    <div class="header-actions">
+      <input
+        type="text"
+        class="search-input"
+        [formControl]="searchControl"
+        placeholder="Search by name"
+        aria-label="Search by name"
+      />
+      <button class="add-btn" type="button" (click)="addDistributor()">Add Distributor</button>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="distributor-table">
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Phone Number</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Active</th>
+          <th>Promo Code</th>
+          <th>Commission %</th>
+          <th>Total Commission</th>
+          <th>Unpaid Commission</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let distributor of filteredDistributors">
+          <td class="action-cell">
+            <button class="edit-btn" type="button" (click)="editDistributor(distributor)">Edit</button>
+          </td>
+          <td>{{ distributor.code }}</td>
+          <td>{{ distributor.name }}</td>
+          <td>{{ distributor.phone }}</td>
+          <td>{{ distributor.startDate }}</td>
+          <td>{{ distributor.endDate }}</td>
+          <td>{{ distributor.active ? 'Yes' : 'No' }}</td>
+          <td>{{ distributor.promo }}</td>
+          <td>{{ distributor.commissionPercent }}</td>
+          <td>{{ distributor.totalCommission }}</td>
+          <td>{{ distributor.unpaidCommission }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <app-add-distributor
+    [mode]="formMode"
+    [distributor]="selectedDistributor"
+    (save)="saveDistributor($event)">
+  </app-add-distributor>
+</section>
