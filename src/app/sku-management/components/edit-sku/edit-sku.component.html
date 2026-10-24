@@ -1,0 +1,10 @@
+<section class="form-panel">
+  <div class="panel-heading"><span class="step-mark">E</span><div><h2>Edit SKU mapping</h2><p>Update the selected product mapping.</p></div></div>
+  <form [formGroup]="skuForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="field-group"><label for="edit-product-code">Product code</label><select id="edit-product-code" formControlName="productCode"><option value="" disabled>Select product code</option><option *ngFor="let code of productCodeMasterList" [value]="code">{{ code }}</option></select></div>
+    <div class="field-group"><label for="edit-process">Process</label><select id="edit-process" formControlName="processCode"><option value="" disabled>Select process</option><option *ngFor="let process of processMasterList" [value]="process.code">{{ process.name }}</option></select></div>
+    <div class="field-group"><label for="edit-category">Category</label><select id="edit-category" formControlName="categoryCode"><option value="" disabled>Select category</option><option *ngFor="let category of categoryMasterList" [value]="category.code">{{ category.name }}</option></select></div>
+    <div class="field-group"><label for="edit-product-name">Product name</label><select id="edit-product-name" formControlName="productName"><option value="" disabled>Select product name</option><option *ngFor="let name of productNameMasterList" [value]="name">{{ name }}</option></select></div>
+    <div class="form-actions"><button class="primary-button" type="submit">Save changes</button><button class="secondary-button" type="button" (click)="cancel.emit()">Cancel</button></div>
+  </form>
+</section>

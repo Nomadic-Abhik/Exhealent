@@ -21,6 +21,11 @@ const routes: Routes = [
     path: 'distributor-management',
     loadChildren: () => import('./distributor-management/distributor-management.module')
       .then((m) => m.DistributorManagementModule)
+  },
+  {
+    path: 'sku-management',
+    loadChildren: () => import('./sku-management/sku-management.module')
+      .then((m) => m.SkuManagementModule)
   }
 ];
 
