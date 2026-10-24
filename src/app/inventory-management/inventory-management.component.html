@@ -1,10 +1,25 @@
-<section class="page">
-  <h2>Inventory Management</h2>
-  <p>Monitor stock levels, manage product movement, and keep warehouse operations aligned.</p>
+<section class="inventory-page">
+  <header class="page-heading">
+    <div>
+      <span class="eyebrow">WAREHOUSE</span>
+      <h1>Inventory Management</h1>
+      <p>Record incoming batches and keep product stock in view.</p>
+    </div>
+    <div class="stock-summary" aria-live="polite">
+      <span class="summary-label">Tracked batches</span>
+      <strong>{{ inventoryRecords.length }}</strong>
+    </div>
+  </header>
 
-  <ul class="feature-list">
-    <li>Track available and reserved stock</li>
-    <li>Review purchase and sales updates</li>
-    <li>Monitor low-stock alerts and supplier activity</li>
-  </ul>
+  <div class="inventory-layout">
+    <app-add-product
+      [productMasterList]="productMasterList"
+      [productNameMasterList]="productNameMasterList"
+      [productCodeMasterList]="productCodeMasterList"
+      [processMasterList]="processMasterList"
+      [categoryMasterList]="categoryMasterList"
+      (add)="addInventory($event)">
+    </app-add-product>
+    <app-review-inventory [inventoryRecords]="inventoryRecords" (remove)="removeInventory($event)"></app-review-inventory>
+  </div>
 </section>

@@ -1,0 +1,33 @@
+.entry-panel {
+  padding: 22px;
+  border: 1px solid #e0e8e2;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(30, 58, 45, .045);
+}
+
+.panel-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.step-mark { display: grid; width: 34px; height: 34px; flex: 0 0 34px; place-items: center; border: 1px solid #c9ddd1; border-radius: 50%; color: #39775f; font-size: 11px; font-weight: 800; }
+.panel-heading h2 { margin: 0 0 4px; color: #203b30; font-size: 17px; }
+.panel-heading p { margin: 0; color: #73817b; font-size: 12px; }
+form, .field-group { display: grid; }
+form { gap: 14px; }
+.field-group { min-width: 0; align-content: start; gap: 6px; }
+.field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+label { color: #42534b; font-size: 12px; font-weight: 700; }
+label span { color: #829089; font-weight: 500; }
+input, select { width: 100%; min-width: 0; height: 39px; padding: 0 10px; border: 1px solid #d8e1da; border-radius: 3px; outline: none; background: #fff; color: #263a31; font: inherit; font-size: 12px; }
+input:focus, select:focus { border-color: #4c8a6e; box-shadow: 0 0 0 3px rgba(76, 138, 110, .12); }
+input::placeholder { color: #a3ada7; }
+.input-prefix, .input-suffix { display: flex; min-width: 0; align-items: center; border: 1px solid #d8e1da; border-radius: 3px; background: #fff; }
+.input-prefix:focus-within, .input-suffix:focus-within { border-color: #4c8a6e; box-shadow: 0 0 0 3px rgba(76, 138, 110, .12); }
+.input-prefix > span, .input-suffix > span { padding: 0 9px; color: #77867d; font-size: 12px; }
+.input-prefix input, .input-suffix input { border: 0; box-shadow: none; }
+.field-error { color: #a34436; font-size: 10px; }
+.submit-button { display: flex; height: 42px; align-items: center; justify-content: center; gap: 8px; margin-top: 2px; border: 0; border-radius: 3px; background: #27634e; color: #fff; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; transition: background 150ms ease, transform 150ms ease; }
+.submit-button:hover { transform: translateY(-1px); background: #1e523f; }
+.submit-button span { font-size: 20px; font-weight: 400; line-height: 1; }
+
+@media (max-width: 520px) {
+  .entry-panel { padding: 18px 15px; }
+  .field-row { gap: 9px; }
+}

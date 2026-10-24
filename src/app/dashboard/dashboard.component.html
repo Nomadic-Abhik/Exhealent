@@ -1,0 +1,34 @@
+<section class="dashboard-page">
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">Overview</p>
+      <h2>Sales Dashboard</h2>
+    </div>
+  </div>
+
+  <div class="metric-group">
+    <h3 class="group-title">Sales Overview</h3>
+    <div class="stats-grid">
+      <article class="stat-card" *ngFor="let metric of summaryMetrics" [ngClass]="metric.accent">
+        <div class="card-top">
+          <span class="metric-label">{{ metric.label }}</span>
+        </div>
+        <h3 class="metric-value">{{ metric.value }}</h3>
+        <p class="metric-trend">{{ metric.trend }}</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="metric-group">
+    <h3 class="group-title">Category Wise Sales</h3>
+    <div class="stats-grid">
+      <article class="stat-card" *ngFor="let metric of categoryMetrics" [ngClass]="metric.accent">
+        <div class="card-top">
+          <span class="metric-label">{{ metric.label }}</span>
+        </div>
+        <h3 class="metric-value">{{ metric.value }}</h3>
+        <p class="metric-trend">{{ metric.trend }}</p>
+      </article>
+    </div>
+  </div>
+</section>

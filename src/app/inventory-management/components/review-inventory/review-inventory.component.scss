@@ -1,0 +1,22 @@
+.stock-panel { min-width: 0; padding-top: 22px; border: 1px solid #e0e8e2; background: #fff; box-shadow: 0 5px 18px rgba(30, 58, 45, .045); }
+.panel-heading { display: flex; align-items: center; gap: 12px; margin: 0 0 22px; padding: 0 22px; }
+.step-mark { display: grid; width: 34px; height: 34px; flex: 0 0 34px; place-items: center; border: 1px solid #c9ddd1; border-radius: 50%; color: #39775f; font-size: 11px; font-weight: 800; }
+.panel-heading h2 { margin: 0 0 4px; color: #203b30; font-size: 17px; }
+.panel-heading p { margin: 0; color: #73817b; font-size: 12px; }
+.table-scroll { overflow-x: auto; border-top: 1px solid #e7ece8; }
+.inventory-table { width: 100%; border-collapse: collapse; white-space: nowrap; font-size: 12px; }
+.inventory-table th { padding: 12px 10px; background: #f7f9f7; color: #75827a; font-size: 10px; font-weight: 800; text-align: left; text-transform: uppercase; }
+.inventory-table td { padding: 13px 10px; border-top: 1px solid #edf1ee; color: #54635b; }
+.inventory-table th:first-child, .inventory-table td:first-child { padding-left: 22px; }
+.inventory-table th:last-child, .inventory-table td:last-child { padding-right: 16px; }
+.inventory-table .numeric { text-align: right; }
+.product-cell { color: #263b31 !important; font-weight: 700; }
+.code-value { color: #597468; font-size: 11px; font-weight: 700; }
+.order-value { color: #bb693a !important; font-weight: 700; }
+.stock-value { color: #27634e !important; font-weight: 800; }
+.remove-button { width: 27px; height: 27px; border: 1px solid transparent; border-radius: 3px; background: transparent; color: #9a6255; cursor: pointer; font-size: 18px; line-height: 1; }
+.empty-state { display: grid; min-height: 290px; align-content: center; justify-items: center; padding: 28px; border-top: 1px solid #e7ece8; text-align: center; }
+.empty-icon { display: grid; width: 46px; height: 46px; place-items: center; border-radius: 50%; background: #edf4ef; color: #39775f; font-size: 22px; }
+.empty-state h3 { margin: 14px 0 5px; color: #31483c; font-size: 14px; }
+.empty-state p { margin: 0; color: #849087; font-size: 12px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }

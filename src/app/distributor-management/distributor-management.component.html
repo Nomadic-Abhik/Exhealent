@@ -31,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let distributor of filteredDistributors">
+        <tr *ngFor="let distributor of paginatedDistributors">
           <td class="action-cell">
             <button class="edit-btn" type="button" (click)="editDistributor(distributor)">Edit</button>
           </td>
@@ -48,6 +48,12 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="pagination-row" *ngIf="filteredDistributors.length > 0">
+    <button type="button" class="page-btn" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">Previous</button>
+    <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
+    <button type="button" class="page-btn" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">Next</button>
   </div>
 
   <app-add-distributor

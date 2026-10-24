@@ -54,7 +54,7 @@
   overflow-x: auto;
   max-height: 430px;
   overflow-y: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   background: #fff;
@@ -107,4 +107,32 @@
 
 .pay-btn {
   background: #f59e0b;
+}
+
+.pagination-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.page-btn {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #111827;
+  border-radius: 6px;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+
+.page-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.page-info {
+  color: #374151;
+  font-weight: 600;
 }

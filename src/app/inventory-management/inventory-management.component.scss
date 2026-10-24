@@ -1,21 +1,19 @@
-.page {
-  padding: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-h2 {
-  margin-bottom: 0.75rem;
-  color: #1f2937;
-}
-
-p {
-  color: #4b5563;
-  margin-bottom: 1rem;
-}
-
-.feature-list {
-  padding-left: 1.25rem;
-  color: #111827;
-  line-height: 1.8;
+:host { display: block; color: #202b2b; }
+.inventory-page { min-height: 100%; padding: 30px clamp(18px, 3vw, 44px) 44px; background-color: #f4f7f4; background-image: radial-gradient(#dce6df .7px, transparent .7px); background-size: 16px 16px; }
+.page-heading, .inventory-layout { width: min(100%, 1600px); margin: 0 auto; }
+.page-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+.eyebrow { color: #39775f; font-size: 11px; font-weight: 800; letter-spacing: 1.4px; }
+.page-heading h1 { margin: 6px 0 5px; color: #172c27; font: 600 30px Georgia, 'Times New Roman', serif; }
+.page-heading p { margin: 0; color: #73817b; font-size: 13px; }
+.stock-summary { display: grid; min-width: 132px; gap: 3px; padding: 11px 16px; border-left: 3px solid #d17a45; background: #fff; }
+.summary-label { color: #73817b; font-size: 11px; }
+.stock-summary strong { color: #173e32; font: 23px/1.1 Georgia, 'Times New Roman', serif; }
+.inventory-layout { display: grid; grid-template-columns: minmax(300px, 370px) minmax(0, 1fr); align-items: start; gap: 18px; }
+@media (max-width: 1050px) { .inventory-layout { grid-template-columns: minmax(280px, 340px) minmax(0, 1fr); } }
+@media (max-width: 820px) { .inventory-layout { grid-template-columns: 1fr; } }
+@media (max-width: 520px) {
+  .inventory-page { padding: 22px 14px 30px; }
+  .page-heading { align-items: flex-start; }
+  .page-heading h1 { font-size: 25px; }
+  .stock-summary { min-width: 98px; padding: 9px 11px; }
 }

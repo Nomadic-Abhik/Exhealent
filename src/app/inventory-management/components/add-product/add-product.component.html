@@ -1,0 +1,80 @@
+<aside class="entry-panel">
+  <div class="panel-heading">
+    <span class="step-mark">01</span>
+    <div>
+      <h2>Add inventory</h2>
+      <p>Enter product and batch details</p>
+    </div>
+  </div>
+
+  <form [formGroup]="inventoryForm" (ngSubmit)="addInventory()" novalidate>
+    <div class="field-group">
+      <label for="productCode">Product code</label>
+      <select id="productCode" formControlName="productCode"
+        (change)="selectProductCode($any($event.target).value)">
+        <option value="" disabled>Select code</option>
+        <option *ngFor="let productCode of productCodeMasterList" [value]="productCode">{{ productCode }}</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label for="process">Process</label>
+      <select id="process" formControlName="process" aria-label="Process selected from product master">
+        <option value="" disabled>Select process</option>
+        <option *ngFor="let process of processMasterList" [value]="process.name">{{ process.name }}</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label for="productCategory">Category</label>
+      <select id="productCategory" formControlName="productCategory" aria-label="Category selected from product master">
+        <option value="" disabled>Select category</option>
+        <option *ngFor="let category of categoryMasterList" [value]="category.name">{{ category.name }}</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label for="productName">Product name</label>
+      <select id="productName" formControlName="productName" aria-label="Product name selected from product master">
+        <option value="" disabled>Select product</option>
+        <option *ngFor="let productName of productNameMasterList" [value]="productName">{{ productName }}</option>
+      </select>
+      <small class="field-error" *ngIf="inventoryForm.controls.productName.touched && inventoryForm.controls.productName.invalid">Choose a product.</small>
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label for="productWeight">Product weight <span>(g)</span></label>
+        <div class="input-suffix"><input id="productWeight" type="number" min="1" step="1" formControlName="productWeight" placeholder="0"><span>g</span></div>
+      </div>
+      <div class="field-group">
+        <label for="quantity">Product quantity</label>
+        <input id="quantity" type="number" min="1" step="1" formControlName="quantity" placeholder="0">
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label for="batchNumber">Batch number</label>
+      <input id="batchNumber" type="text" formControlName="batchNumber" maxlength="32" placeholder="e.g. B24A001">
+      <small class="field-error" *ngIf="inventoryForm.controls.batchNumber.touched && inventoryForm.controls.batchNumber.invalid">Use letters, numbers, or hyphens.</small>
+    </div>
+
+    <div class="field-group">
+      <label for="batchEntryDate">Batch entry date</label>
+      <input id="batchEntryDate" type="datetime-local" formControlName="batchEntryDate">
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label for="mrp">MRP <span>(INR)</span></label>
+        <div class="input-prefix"><span>₹</span><input id="mrp" type="number" min="0.01" step="0.01" formControlName="mrp" placeholder="0.00"></div>
+      </div>
+      <div class="field-group">
+        <label for="currentDiscount">Current discount <span>(%)</span></label>
+        <div class="input-suffix"><input id="currentDiscount" type="number" min="0" max="100" step="0.01" formControlName="currentDiscount" placeholder="0"><span>%</span></div>
+      </div>
+    </div>
+
+    <button class="submit-button" type="submit"><span aria-hidden="true">+</span> Add to inventory</button>
+  </form>
+</aside>

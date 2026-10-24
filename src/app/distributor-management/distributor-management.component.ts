@@ -62,6 +62,8 @@ export class DistributorManagementComponent {
   searchControl = new FormControl('');
   selectedDistributor: Distributor | null = null;
   formMode: 'add' | 'edit' = 'add';
+  currentPage = 1;
+  pageSize = 5;
 
   addDistributor(): void {
     this.formMode = 'add';
@@ -96,6 +98,28 @@ export class DistributorManagementComponent {
     );
   }
 
+  get totalPages(): number {
+    return Math.max(1, Math.ceil(this.filteredDistributors.length / this.pageSize));
+  }
+
+  get paginatedDistributors(): Distributor[] {
+    const start = (this.currentPage - 1) * this.pageSize;
+    const end = start + this.pageSize;
+    return this.filteredDistributors.slice(start, end);
+  }
+
+  goToPage(page: number): void {
+    if (page < 1) {
+      page = 1;
+    }
+
+    if (page > this.totalPages) {
+      page = this.totalPages;
+    }
+
+    this.currentPage = page;
+  }
+
   saveDistributor(distributor: Distributor): void {
     if (this.formMode === 'add') {
       this.distributors = [...this.distributors, { ...distributor }];
@@ -105,6 +129,7 @@ export class DistributorManagementComponent {
       );
     }
 
+    this.currentPage = 1;
     this.selectedDistributor = { ...distributor };
   }
 

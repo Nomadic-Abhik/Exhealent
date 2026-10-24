@@ -1,0 +1,46 @@
+<section class="stock-panel" aria-labelledby="stock-heading">
+  <div class="panel-heading">
+    <span class="step-mark">02</span>
+    <div>
+      <h2 id="stock-heading">Stock register</h2>
+      <p>{{ inventoryRecords.length }} {{ inventoryRecords.length === 1 ? 'batch' : 'batches' }} recorded</p>
+    </div>
+  </div>
+
+  <div class="table-scroll" *ngIf="inventoryRecords.length; else emptyState">
+    <table class="inventory-table">
+      <thead>
+        <tr>
+          <th>Process</th><th>Product</th><th>Code</th><th>Category</th><th>Weight (g)</th><th>Quantity</th><th>Batch no.</th><th>Entry date</th>
+          <th class="numeric">MRP</th><th class="numeric">Discount</th><th class="numeric">Order qty</th>
+          <th class="numeric">Current stock</th><th><span class="visually-hidden">Actions</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of inventoryRecords; let rowIndex = index">
+          <td>{{ record.process }}</td>
+          <td class="product-cell">{{ record.productName }}</td>
+          <td><span class="code-value">{{ record.productCode }}</span></td>
+          <td>{{ record.productCategory }}</td>
+          <td>{{ record.productWeight | number:'1.0-3' }}</td>
+          <td>{{ record.quantity }}</td>
+          <td>{{ record.batchNumber }}</td>
+          <td>{{ record.batchEntryDate | date:'dd MMM yyyy, HH:mm' }}</td>
+          <td class="numeric">{{ record.mrp | currency:'INR':'symbol':'1.2-2' }}</td>
+          <td class="numeric">{{ record.currentDiscount }}%</td>
+          <td class="numeric order-value">{{ record.quantity }}</td>
+          <td class="numeric stock-value">{{ currentStock(record.productCode) }}</td>
+          <td><button class="remove-button" type="button" (click)="remove.emit(rowIndex)" [attr.aria-label]="'Remove batch ' + record.batchNumber" title="Remove batch">×</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <span class="empty-icon" aria-hidden="true">▤</span>
+      <h3>No inventory recorded</h3>
+      <p>New product batches will appear here.</p>
+    </div>
+  </ng-template>
+</section>
