@@ -7,7 +7,7 @@ Angular 20 workspace with a shell and three independently buildable Native Feder
 | Unified shell | `silknslope-unified` | `http://localhost:4200` | Global layout, navigation, theme, dashboard |
 | Procurement | `silknslope-procurement` | `http://localhost:4201` | Distributor management |
 | Inventory | `silknslope-inventory` | `http://localhost:4202` | Inventory and SKU management |
-| Orders | `silknslope-order` | `http://localhost:4203` | Empty-state placeholder |
+| Orders | `silknslope-order` | `http://localhost:4203` | Manual order entry, current orders, and past orders |
 
 ## Local development
 

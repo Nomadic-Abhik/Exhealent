@@ -1,0 +1,18 @@
+<main class="order-page">
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">SilknSlope Admin / Orders</p>
+      <h1>Order management</h1>
+      <p class="page-description">Create orders and keep track of their progress.</p>
+    </div>
+    <span class="page-badge">Order desk</span>
+  </header>
+
+  <div class="workspace">
+    <orders-manual-order (orderCreated)="createOrder($event)" />
+    <orders-review-orders
+      [currentOrders]="currentOrders()"
+      [pastOrders]="pastOrders()"
+      (orderCompleted)="completeOrder($event)" />
+  </div>
+</main>

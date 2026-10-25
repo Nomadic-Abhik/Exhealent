@@ -1,0 +1,43 @@
+<section class="panel manual-order" aria-labelledby="manual-order-title">
+  <header class="panel-header">
+    <div>
+      <p class="eyebrow">Order entry</p>
+      <h2 id="manual-order-title">Create manual order</h2>
+      <p class="panel-description">Enter the customer and delivery details to add an order.</p>
+    </div>
+    <span class="step-number" aria-hidden="true">01</span>
+  </header>
+
+  <form [formGroup]="orderForm" (ngSubmit)="createOrder()" novalidate>
+    <label for="customer">Customer name</label>
+    <input id="customer" type="text" formControlName="customer" placeholder="e.g. Northstar Retail" autocomplete="organization" />
+    @if (orderForm.controls.customer.touched && orderForm.controls.customer.hasError('required')) {
+      <span class="field-error">Enter a customer name.</span>
+    }
+
+    <label for="product">Product</label>
+    <input id="product" type="text" formControlName="product" placeholder="e.g. Classic linen shirt" />
+    @if (orderForm.controls.product.touched && orderForm.controls.product.hasError('required')) {
+      <span class="field-error">Enter a product.</span>
+    }
+
+    <div class="form-row">
+      <div>
+        <label for="quantity">Quantity</label>
+        <input id="quantity" type="number" formControlName="quantity" min="1" />
+        @if (orderForm.controls.quantity.touched && orderForm.controls.quantity.invalid) {
+          <span class="field-error">Quantity must be at least 1.</span>
+        }
+      </div>
+      <div>
+        <label for="delivery-date">Delivery date</label>
+        <input id="delivery-date" type="date" formControlName="deliveryDate" />
+        @if (orderForm.controls.deliveryDate.touched && orderForm.controls.deliveryDate.hasError('required')) {
+          <span class="field-error">Choose a delivery date.</span>
+        }
+      </div>
+    </div>
+
+    <button class="create-button" type="submit">Create order</button>
+  </form>
+</section>

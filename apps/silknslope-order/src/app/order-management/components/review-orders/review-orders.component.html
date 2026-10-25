@@ -1,0 +1,72 @@
+<section class="panel review-orders" aria-labelledby="review-orders-title">
+  <header class="panel-header">
+    <div>
+      <p class="eyebrow">Order overview</p>
+      <h2 id="review-orders-title">Review orders</h2>
+      <p class="panel-description">Track active orders and review completed orders.</p>
+    </div>
+    <span class="order-count">{{ activeTab() === 'current' ? currentOrders.length : pastOrders.length }}</span>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Order status">
+    <button
+      id="current-orders-tab"
+      type="button"
+      role="tab"
+      [attr.aria-selected]="activeTab() === 'current'"
+      [attr.aria-controls]="'current-orders-panel'"
+      [class.active]="activeTab() === 'current'"
+      (click)="selectTab('current')">
+      Current orders <span>{{ currentOrders.length }}</span>
+    </button>
+    <button
+      id="past-orders-tab"
+      type="button"
+      role="tab"
+      [attr.aria-selected]="activeTab() === 'past'"
+      [attr.aria-controls]="'past-orders-panel'"
+      [class.active]="activeTab() === 'past'"
+      (click)="selectTab('past')">
+      Past orders <span>{{ pastOrders.length }}</span>
+    </button>
+  </div>
+
+  @if (activeTab() === 'current') {
+    <div id="current-orders-panel" role="tabpanel" aria-labelledby="current-orders-tab" class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Order</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Product</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Delivery</th>
+            <th scope="col"><span class="visually-hidden">Actions</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (order of currentOrders; track order.orderNumber) {
+            <tr>
+              <td class="order-number">{{ order.orderNumber }}</td>
+              <td>{{ order.customer }}</td>
+              <td>{{ order.product }}</td>
+              <td>{{ order.quantity }}</td>
+              <td>{{ order.deliveryDate | date: 'mediumDate' }}</td>
+              <td>
+                <button class="complete-button" type="button" (click)="completeOrder(order)">Complete</button>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td class="empty-cell" colspan="6">No current orders yet. Create a manual order to get started.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <div id="past-orders-panel" role="tabpanel" aria-labelledby="past-orders-tab">
+      <orders-past-orders [orders]="pastOrders" />
+    </div>
+  }
+</section>

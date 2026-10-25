@@ -1,7 +1,10 @@
 import { Routes } from '@angular/router';
-import { OrderPlaceholderComponent } from './order-placeholder.component';
 
 export const routes: Routes = [
-  { path: '', component: OrderPlaceholderComponent },
+  {
+    path: '',
+    loadChildren: () => import('./order-management/order-management.module')
+      .then((module) => module.OrderManagementModule)
+  },
   { path: '**', redirectTo: '' }
 ];

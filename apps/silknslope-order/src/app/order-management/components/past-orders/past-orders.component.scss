@@ -1,0 +1,43 @@
+:host {
+  display: block;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th {
+  padding: 0.8rem;
+  border-bottom: 1px solid var(--color-border, #e4e1dc);
+  color: var(--color-muted, #71766f);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+td {
+  padding: 0.9rem 0.8rem;
+  border-bottom: 1px solid var(--color-border, #eeeae5);
+  color: var(--color-text, #2d302c);
+  font-size: 0.86rem;
+  white-space: nowrap;
+}
+
+.order-number {
+  font-weight: 700;
+}
+
+.empty-cell {
+  padding: 2.5rem 1rem;
+  color: var(--color-muted, #71766f);
+  text-align: center;
+  white-space: normal;
+}
