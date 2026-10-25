@@ -20,11 +20,11 @@
     </nav>
 
     <button class="theme-toggle" type="button" (click)="toggleTheme()">
-      {{ theme() === 'light' ? 'Dark theme' : 'Light theme' }}
+      {{ theme === 'light' ? 'Dark theme' : 'Light theme' }}
     </button>
   </header>
 
-  @if (isNavigating()) {
+  @if (isNavigating) {
     <div class="route-loading" role="status" aria-live="polite">
       Loading workspace…
     </div>

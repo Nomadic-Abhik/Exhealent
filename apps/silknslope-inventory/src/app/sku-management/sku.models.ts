@@ -14,3 +14,17 @@ export interface SkuCategoryOption {
   code: string;
   name: string;
 }
+
+export interface ProductMasterEntry {
+  code: string;
+  name: string;
+  shortDescription: string;
+  detail: string;
+  available: boolean;
+  image: string;
+}
+
+export enum ProductAvailability {
+  Active = 'Active',
+  Inactive = 'Inactive'
+}

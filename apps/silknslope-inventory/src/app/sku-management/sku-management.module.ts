@@ -6,7 +6,8 @@ import { SkuManagementRoutingModule } from './sku-management-routing.module';
 import { SkuManagementComponent } from './sku-management.component';
 import { AddSkuComponent } from './components/add-sku/add-sku.component';
 import { EditSkuComponent } from './components/edit-sku/edit-sku.component';
-import { AddProductCodeComponent } from './components/add-product-code/add-product-code.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import { ReviewProductComponent } from './components/review-product/review-product.component';
 import { AddProcessComponent } from './components/add-process/add-process.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
 
@@ -15,7 +16,8 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
     SkuManagementComponent,
     AddSkuComponent,
     EditSkuComponent,
-    AddProductCodeComponent,
+    AddProductComponent,
+    ReviewProductComponent,
     AddProcessComponent,
     AddCategoryComponent
   ],

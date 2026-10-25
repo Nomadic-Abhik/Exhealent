@@ -1,0 +1,44 @@
+<section class="review-panel" aria-labelledby="review-products-heading">
+  <header class="review-heading">
+    <div>
+      <h2 id="review-products-heading">Review Products</h2>
+      <p>{{ products.length }} products</p>
+    </div>
+  </header>
+
+  <div class="table-scroll" *ngIf="products.length; else emptyProducts">
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Available</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products"
+          class="selectable-product"
+          [class.selected]="selectedProduct === product"
+          [attr.aria-label]="'Edit product ' + product.name"
+          tabindex="0"
+          (click)="selectProduct(product)"
+          (keydown.enter)="selectProduct(product)"
+          (keydown.space)="selectProduct(product); $event.preventDefault()">
+          <td class="product-code">{{ product.code }}</td>
+          <td>{{ product.name }}</td>
+          <td>
+            <span class="availability" [class.inactive]="!product.available">
+              {{ product.available ? 'Active' : 'Inactive' }}
+            </span>
+          </td>
+          <td class="image-value" [title]="product.image">{{ product.image || '—' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #emptyProducts>
+    <div class="empty-products">No products to review yet.</div>
+  </ng-template>
+</section>

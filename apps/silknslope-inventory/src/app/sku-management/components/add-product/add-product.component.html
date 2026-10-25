@@ -1,0 +1,45 @@
+<section class="master-form">
+  <h2>{{ product ? 'Edit Product' : 'Add Product' }}</h2>
+  <p class="form-note">Product Detail is saved by the API. Short Description is not stored and will clear after reload.</p>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label for="master-product-code">Product code</label>
+      <input id="master-product-code" formControlName="code" placeholder="Letters and numbers only">
+      <span class="field-error" *ngIf="form.controls.code.touched && form.controls.code.hasError('pattern')">
+        Product code must contain letters and numbers only.
+      </span>
+    </div>
+    <div class="field">
+      <label for="master-product-name">Product name</label>
+      <input id="master-product-name" formControlName="name" maxlength="50" placeholder="Enter product name">
+    </div>
+    <div class="field">
+      <label for="master-product-short-description">Product short description</label>
+      <textarea id="master-product-short-description" formControlName="shortDescription" maxlength="100"
+        rows="3" placeholder="Enter a short description (up to 100 characters)"></textarea>
+      <span class="character-count">{{ form.controls.shortDescription.value.length }}/100</span>
+    </div>
+    <div class="field">
+      <label for="master-product-detail">Product detail</label>
+      <textarea id="master-product-detail" formControlName="detail" maxlength="300"
+        rows="5" placeholder="Enter product details (up to 300 characters)"></textarea>
+      <span class="character-count">{{ form.controls.detail.value.length }}/300</span>
+    </div>
+    <div class="field">
+      <label for="master-product-image">Product image</label>
+      <input id="master-product-image" formControlName="image" maxlength="10" placeholder="Enter image string (10 characters max)">
+      <span class="field-error" *ngIf="form.controls.image.touched && form.controls.image.hasError('maxlength')">
+        Product image must be no longer than 10 characters per API requirements.
+      </span>
+    </div>
+    <div class="availability-field">
+      <label for="master-product-available">Product available</label>
+      <input id="master-product-available" type="checkbox" formControlName="available">
+      <span>{{ availabilityStatus }}</span>
+    </div>
+    <div class="form-actions">
+      <button type="submit" [disabled]="saving">{{ saving ? 'Saving…' : product ? 'Save Changes' : 'Add Product' }}</button>
+      <button *ngIf="product" type="button" class="cancel-button" (click)="onCancelEdit()">Cancel</button>
+    </div>
+  </form>
+</section>

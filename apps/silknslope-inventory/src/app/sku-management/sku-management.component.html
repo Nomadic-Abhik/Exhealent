@@ -55,7 +55,15 @@
       (cancel)="cancelEdit()">
     </app-edit-sku>
 
-    <app-add-product-code *ngIf="activeTab === 'product'" role="tabpanel" (save)="addProduct($event)"></app-add-product-code>
+    <div class="product-management-layout" *ngIf="activeTab === 'product'" role="tabpanel">
+      <div class="product-api-status" *ngIf="productsLoading" role="status">Loading products…</div>
+      <div class="product-api-error" *ngIf="productApiError" role="alert">{{ productApiError }}</div>
+      <app-add-product [product]="selectedProduct" [resetAfterSave]="productFormResetKey"
+        [saving]="productSaving" (save)="addProduct($event)"
+        (cancelEdit)="cancelProductEdit()"></app-add-product>
+      <app-review-product [products]="productMasterEntries" [selectedProduct]="selectedProduct"
+        (edit)="editProduct($event)"></app-review-product>
+    </div>
     <app-add-process *ngIf="activeTab === 'process'" role="tabpanel" (save)="addProcess($event)"></app-add-process>
     <app-add-category *ngIf="activeTab === 'category'" role="tabpanel" (save)="addCategory($event)"></app-add-category>
   </section>

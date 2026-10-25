@@ -1,4 +1,4 @@
-import { Component, Inject, signal } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import {
   NavigationCancel,
@@ -20,8 +20,8 @@ import { ShellNavigationLink } from '@silknslope/contracts';
   styleUrl: './app.scss'
 })
 export class App {
-  readonly isNavigating = signal(false);
-  readonly theme = signal<'light' | 'dark'>('light');
+  isNavigating = false;
+  theme: 'light' | 'dark' = 'light';
 
   readonly navigation: ShellNavigationLink[] = [
     { label: 'Dashboard', path: '/dashboard', exact: true },
@@ -40,17 +40,17 @@ export class App {
         event instanceof NavigationCancel ||
         event instanceof NavigationError
       ))
-      .subscribe((event) => this.isNavigating.set(event instanceof NavigationStart));
+      .subscribe((event) => this.isNavigating = event instanceof NavigationStart);
 
     this.applyTheme();
   }
 
   toggleTheme(): void {
-    this.theme.update((current) => current === 'light' ? 'dark' : 'light');
+    this.theme = this.theme === 'light' ? 'dark' : 'light';
     this.applyTheme();
   }
 
   private applyTheme(): void {
-    this.document.documentElement.dataset['theme'] = this.theme();
+    this.document.documentElement.dataset['theme'] = this.theme;
   }
 }
