@@ -12,20 +12,25 @@ Angular 20 workspace with a shell and three independently buildable Native Feder
 ## Local development
 
 Use a Node.js version supported by Angular 20 (Node 20.19+ or 22.12+).
-Start each app in its own terminal:
+From the repository root, start the full microfrontend workspace in one terminal:
 
 ```sh
-npm run start:procurement
-npm run start:inventory
-npm run start:orders
+npm start
+# or
 npm run start:unified
 ```
 
-The unified shell reads `apps/silknslope-unified/public/federation.manifest.json` at runtime. The checked-in
-manifest points at the local remote servers above. For another environment, provide a
-manifest with the same remote keys (`silknslopeProcurement`, `silknslopeInventory`,
-`silknslopeOrder`) and that environment's `remoteEntry.json` URLs as a deploy-time
-asset; no deployed URL is embedded in feature code or the shell routes.
+This starts the unified app and all three remotes concurrently. Press Ctrl+C to stop
+them. To start an individual app instead, use `npx ng serve silknslope-unified`,
+`npm run start:procurement`, `npm run start:inventory`, or `npm run start:orders`
+from the repository root.
+
+The unified app reads `apps/silknslope-unified/public/federation.manifest.json` at
+runtime. The checked-in manifest points at the local remote servers above. For another
+environment, provide a manifest with the same remote keys (`silknslopeProcurement`,
+`silknslopeInventory`, `silknslopeOrder`) and that environment's `remoteEntry.json`
+URLs as a deploy-time asset; no deployed URL is embedded in feature code or the
+unified app routes.
 
 Top-level URLs are `/dashboard`, `/procurement/**`, `/inventory/**`, and `/orders/**`.
 The inventory remote retains the original feature paths below its domain prefix:
