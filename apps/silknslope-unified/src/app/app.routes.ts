@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module').then((module) => module.DashboardModule)
   },
   {
+    path: 'distributors',
+    loadChildren: () => loadRemoteRoutes('silknslopeDistributor')
+  },
+  {
     path: 'procurement',
     loadChildren: () => loadRemoteRoutes('silknslopeProcurement')
   },

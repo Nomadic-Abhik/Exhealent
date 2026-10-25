@@ -25,6 +25,7 @@ export class App {
 
   readonly navigation: ShellNavigationLink[] = [
     { label: 'Dashboard', path: '/dashboard', exact: true },
+    { label: 'Distributors', path: '/distributors' },
     { label: 'Procurement', path: '/procurement' },
     { label: 'Inventory', path: '/inventory/inventory-management' },
     { label: 'SKU management', path: '/inventory/sku-management' },

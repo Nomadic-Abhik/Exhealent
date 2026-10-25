@@ -35,5 +35,10 @@
   },
   "include": [
     "libs/microfrontend-contracts/src/**/*.ts"
+  ],
+  "references": [
+    {
+      "path": "./apps/silknslope-distributor/tsconfig.app.json"
+    }
   ]
 }

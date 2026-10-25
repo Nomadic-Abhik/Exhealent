@@ -5,15 +5,16 @@
     "ng": "ng",
     "start": "npm run start:all",
     "start:unified": "npm run start:all",
-    "start:all": "concurrently --kill-others --names unified,procurement,inventory,orders \"ng serve silknslope-unified\" \"ng serve silknslope-procurement\" \"ng serve silknslope-inventory\" \"ng serve silknslope-order\"",
+    "start:all": "concurrently --kill-others --names unified,procurement,inventory,orders,distributor \"ng serve silknslope-unified\" \"ng serve silknslope-procurement\" \"ng serve silknslope-inventory\" \"ng serve silknslope-order\" \"ng serve silknslope-distributor\"",
     "start:procurement": "ng serve silknslope-procurement",
     "start:inventory": "ng serve silknslope-inventory",
     "start:orders": "ng serve silknslope-order",
+    "start:distributor": "ng serve silknslope-distributor",
     "build": "ng build silknslope-unified",
-    "build:all": "ng build silknslope-unified && ng build silknslope-procurement && ng build silknslope-inventory && ng build silknslope-order",
+    "build:all": "ng build silknslope-unified && ng build silknslope-procurement && ng build silknslope-inventory && ng build silknslope-order && ng build silknslope-distributor",
     "watch": "ng build silknslope-unified --watch --configuration development",
     "test": "ng test silknslope-unified",
-    "test:all": "ng test silknslope-unified --watch=false --browsers=ChromeHeadless && ng test silknslope-procurement --watch=false --browsers=ChromeHeadless && ng test silknslope-inventory --watch=false --browsers=ChromeHeadless && ng test silknslope-order --watch=false --browsers=ChromeHeadless"
+    "test:all": "ng test silknslope-unified --watch=false --browsers=ChromeHeadless && ng test silknslope-procurement --watch=false --browsers=ChromeHeadless && ng test silknslope-inventory --watch=false --browsers=ChromeHeadless && ng test silknslope-order --watch=false --browsers=ChromeHeadless && ng test silknslope-distributor --watch=false --browsers=ChromeHeadless"
   },
   "private": true,
   "dependencies": {
