@@ -9,7 +9,6 @@ import { EditSkuComponent } from './components/edit-sku/edit-sku.component';
 import { AddProductCodeComponent } from './components/add-product-code/add-product-code.component';
 import { AddProcessComponent } from './components/add-process/add-process.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
-import { AddProductNameComponent } from './components/add-product-name/add-product-name.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { AddProductNameComponent } from './components/add-product-name/add-produ
     EditSkuComponent,
     AddProductCodeComponent,
     AddProcessComponent,
-    AddCategoryComponent,
-    AddProductNameComponent
+    AddCategoryComponent
   ],
   imports: [CommonModule, ReactiveFormsModule, SkuManagementRoutingModule]
 })

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductMasterEntry } from './components/add-product-code/add-product-code.component';
 import { SkuCategoryOption, SkuMapping, SkuProcessOption } from './sku.models';
 
 @Component({
@@ -32,7 +33,7 @@ export class SkuManagementComponent {
     { productCode: 'EGA-70', processCode: 'PROC-004', categoryCode: 'CAT-001', productName: 'Silk & Slope Copper' }
   ];
 
-  activeTab: 'list' | 'add' | 'edit' | 'product-code' | 'process' | 'category' | 'product-name' = 'list';
+  activeTab: 'list' | 'add' | 'edit' | 'product' | 'process' | 'category' = 'list';
   selectedIndex: number | null = null;
 
   get selectedSku(): SkuMapping | null {
@@ -74,11 +75,19 @@ export class SkuManagementComponent {
     this.selectedIndex = null;
   }
 
-  addProductCode(code: string): void {
-    if (!code || this.productCodeMasterList.includes(code)) {
+  addProduct(product: ProductMasterEntry): void {
+    const code = product.code.trim();
+    const name = product.name.trim();
+    if (!code || !name) {
       return;
     }
-    this.productCodeMasterList.push(code);
+
+    if (!this.productCodeMasterList.includes(code)) {
+      this.productCodeMasterList.push(code);
+    }
+    if (!this.productNameMasterList.includes(name)) {
+      this.productNameMasterList.push(name);
+    }
     this.activeTab = 'list';
   }
 
@@ -98,11 +107,4 @@ export class SkuManagementComponent {
     this.activeTab = 'list';
   }
 
-  addProductName(name: string): void {
-    if (!name || this.productNameMasterList.includes(name)) {
-      return;
-    }
-    this.productNameMasterList.push(name);
-    this.activeTab = 'list';
-  }
 }

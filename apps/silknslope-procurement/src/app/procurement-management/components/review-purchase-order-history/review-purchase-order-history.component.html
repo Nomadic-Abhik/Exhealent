@@ -1,0 +1,43 @@
+<section class="panel" aria-labelledby="purchase-order-history-title">
+  <header class="panel-header">
+    <div>
+      <p class="eyebrow">Procurement records</p>
+      <h2 id="purchase-order-history-title">Purchase order history</h2>
+      <p class="panel-description">History of purchase orders created in this session.</p>
+    </div>
+    <span class="order-count">{{ orders.length }}</span>
+  </header>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Order</th>
+          <th scope="col">Created</th>
+          <th scope="col">Supplier</th>
+          <th scope="col">Product</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total procurement cost (INR)</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (order of orders; track order.orderNumber) {
+          <tr>
+            <td class="order-number">{{ order.orderNumber }}</td>
+            <td>{{ order.createdAt | date: 'medium' }}</td>
+            <td>{{ order.supplier }}</td>
+            <td>{{ order.productName }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.totalProcurementCost | number: '1.2-2' }}</td>
+            <td><span class="status">{{ order.status }}</span></td>
+          </tr>
+        } @empty {
+          <tr>
+            <td class="empty-cell" colspan="7">Created purchase orders will appear here.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

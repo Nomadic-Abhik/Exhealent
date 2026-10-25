@@ -1,0 +1,24 @@
+<main class="procurement-page">
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">SilknSlope Admin / Procurement</p>
+      <h1>Procurement management</h1>
+      <p class="page-description">Create purchase orders and review current orders and their history.</p>
+    </div>
+    <span class="page-badge">Procurement</span>
+  </header>
+
+  <div class="purchase-order-workspace">
+    <procurement-create-purchase-order
+      [supplierList]="supplierList"
+      [productMasterList]="productMasterList"
+      [productCodeMasterList]="productCodeMasterList"
+      [processMasterList]="processMasterList"
+      [categoryMasterList]="categoryMasterList"
+      (purchaseOrderCreated)="createPurchaseOrder($event)" />
+    <div class="order-overview">
+      <procurement-review-purchase-order [orders]="purchaseOrders()" />
+      <procurement-review-purchase-order-history [orders]="purchaseOrders()" />
+    </div>
+  </div>
+</main>

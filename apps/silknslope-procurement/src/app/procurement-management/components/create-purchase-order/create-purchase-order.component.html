@@ -1,0 +1,125 @@
+<section class="panel" aria-labelledby="create-purchase-order-title">
+  <header class="panel-header">
+    <div>
+      <p class="eyebrow">Order entry</p>
+      <h2 id="create-purchase-order-title">Create purchase order</h2>
+      <p class="panel-description">Enter supplier and product batch details to create a purchase order.</p>
+    </div>
+    <span class="step-number" aria-hidden="true">01</span>
+  </header>
+
+  <form [formGroup]="purchaseOrderForm" (ngSubmit)="createPurchaseOrder()" novalidate>
+    <label for="supplier">Supplier name</label>
+    <select id="supplier" formControlName="supplier">
+      <option value="" disabled>Select supplier</option>
+      @for (supplier of supplierList; track supplier) {
+        <option [value]="supplier">{{ supplier }}</option>
+      }
+    </select>
+    @if (purchaseOrderForm.controls.supplier.touched && purchaseOrderForm.controls.supplier.hasError('required')) {
+      <span class="field-error">Choose a supplier.</span>
+    }
+
+    <label for="productCode">Product code</label>
+    <select id="productCode" formControlName="productCode" #productCodeSelect (change)="selectProductCode(productCodeSelect.value)">
+      <option value="" disabled>Select code</option>
+      @for (productCode of productCodeMasterList; track productCode) {
+        <option [value]="productCode">{{ productCode }}</option>
+      }
+    </select>
+    @if (purchaseOrderForm.controls.productCode.touched && purchaseOrderForm.controls.productCode.hasError('required')) {
+      <span class="field-error">Choose a product code.</span>
+    }
+
+    <label for="process">Process</label>
+    <select id="process" formControlName="process" aria-label="Process selected from product master">
+      <option value="" disabled>Select process</option>
+      @for (process of processMasterList; track process.code) {
+        <option [value]="process.name">{{ process.name }}</option>
+      }
+    </select>
+    <label for="productCategory">Category</label>
+    <select id="productCategory" formControlName="productCategory" aria-label="Category selected from product master">
+      <option value="" disabled>Select category</option>
+      @for (category of categoryMasterList; track category.code) {
+        <option [value]="category.name">{{ category.name }}</option>
+      }
+    </select>
+
+    <label for="productName">Product name</label>
+    <select id="productName" formControlName="productName" aria-label="Product name selected from product master">
+      <option value="" disabled>Select product</option>
+      @for (product of productMasterList; track product.code) {
+        <option [value]="product.name">{{ product.name }}</option>
+      }
+    </select>
+
+    <div class="form-row">
+      <div>
+        <label for="productWeight">Product weight (g)</label>
+        <input id="productWeight" type="number" formControlName="productWeight" min="1" step="1" />
+        @if (purchaseOrderForm.controls.productWeight.touched && purchaseOrderForm.controls.productWeight.invalid) {
+          <span class="field-error">Product weight must be at least 1 g.</span>
+        }
+      </div>
+      <div>
+        <label for="quantity">Product quantity</label>
+        <input id="quantity" type="number" formControlName="quantity" min="1" step="1" />
+        @if (purchaseOrderForm.controls.quantity.touched && purchaseOrderForm.controls.quantity.invalid) {
+          <span class="field-error">Quantity must be at least 1.</span>
+        }
+      </div>
+    </div>
+
+    <label for="batchNumber">Batch number</label>
+    <input id="batchNumber" type="text" formControlName="batchNumber" maxlength="32" placeholder="e.g. B24A001" />
+    @if (purchaseOrderForm.controls.batchNumber.touched && purchaseOrderForm.controls.batchNumber.invalid) {
+      <span class="field-error">Enter a batch number using letters, numbers, or hyphens.</span>
+    }
+
+    <label for="batchEntryDate">Batch entry date</label>
+    <input id="batchEntryDate" type="datetime-local" formControlName="batchEntryDate" />
+
+    <div class="form-row">
+      <div>
+        <label for="price">Price (INR, per unit)</label>
+        <input id="price" type="number" formControlName="price" min="0.01" step="0.01" />
+        @if (purchaseOrderForm.controls.price.touched && purchaseOrderForm.controls.price.invalid) {
+          <span class="field-error">Price must be greater than 0.</span>
+        }
+      </div>
+      <div>
+        <label for="deliveryMiscCharge">Delivery &amp; Misc Charge (INR)</label>
+        <input id="deliveryMiscCharge" type="number" formControlName="deliveryMiscCharge" min="0" step="0.01" />
+        @if (purchaseOrderForm.controls.deliveryMiscCharge.touched && purchaseOrderForm.controls.deliveryMiscCharge.invalid) {
+          <span class="field-error">Enter a delivery and miscellaneous charge of 0 or more.</span>
+        }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label for="totalTax">Total Tax (INR)</label>
+        <input id="totalTax" type="number" formControlName="totalTax" min="0" step="0.01" />
+        @if (purchaseOrderForm.controls.totalTax.touched && purchaseOrderForm.controls.totalTax.invalid) {
+          <span class="field-error">Enter total tax of 0 or more.</span>
+        }
+      </div>
+      <div>
+        <label for="miscCharge">Misc Charge (INR)</label>
+        <input id="miscCharge" type="number" formControlName="miscCharge" min="0" step="0.01" />
+        @if (purchaseOrderForm.controls.miscCharge.touched && purchaseOrderForm.controls.miscCharge.invalid) {
+          <span class="field-error">Enter a miscellaneous charge of 0 or more.</span>
+        }
+      </div>
+    </div>
+
+    <div class="total-cost">
+      <label for="totalProcurementCost">Total Procurement Cost (INR)</label>
+      <input id="totalProcurementCost" type="number" [value]="totalProcurementCost" readonly />
+      <small>Price × quantity + delivery &amp; misc charge + total tax + misc charge</small>
+    </div>
+
+    <button class="create-button" type="submit">Create purchase order</button>
+  </form>
+</section>

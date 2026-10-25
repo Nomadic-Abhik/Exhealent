@@ -1,1 +1,10 @@
-<section class="master-form"><h2>Add Product Code</h2><form [formGroup]="form" (ngSubmit)="onSubmit()"><label for="master-product-code">Product code</label><input id="master-product-code" formControlName="code" placeholder="e.g. SKU-1001"><button type="submit">Add Product Code</button></form></section>
+<section class="master-form">
+  <h2>Add Product</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="master-product-code">Product code</label>
+    <input id="master-product-code" formControlName="code" placeholder="e.g. SKU-1001">
+    <label for="master-product-name">Product name</label>
+    <input id="master-product-name" formControlName="name" placeholder="Enter product name">
+    <button type="submit">Add Product</button>
+  </form>
+</section>

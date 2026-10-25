@@ -13,10 +13,9 @@
       <button type="button" role="tab" [attr.aria-selected]="activeTab === 'list'" [class.active]="activeTab === 'list'" (click)="activeTab = 'list'">SKU List</button>
       <button type="button" role="tab" [attr.aria-selected]="activeTab === 'add'" [class.active]="activeTab === 'add'" (click)="activeTab = 'add'">Add SKU</button>
       <button type="button" role="tab" [attr.aria-selected]="activeTab === 'edit'" [class.active]="activeTab === 'edit'" [disabled]="selectedIndex === null" (click)="activeTab = 'edit'">Edit SKU</button>
-      <button type="button" role="tab" [attr.aria-selected]="activeTab === 'product-code'" [class.active]="activeTab === 'product-code'" (click)="activeTab = 'product-code'">Add Product Code</button>
+      <button type="button" role="tab" [attr.aria-selected]="activeTab === 'product'" [class.active]="activeTab === 'product'" (click)="activeTab = 'product'">Add Product</button>
       <button type="button" role="tab" [attr.aria-selected]="activeTab === 'process'" [class.active]="activeTab === 'process'" (click)="activeTab = 'process'">Add Process</button>
       <button type="button" role="tab" [attr.aria-selected]="activeTab === 'category'" [class.active]="activeTab === 'category'" (click)="activeTab = 'category'">Add Category</button>
-      <button type="button" role="tab" [attr.aria-selected]="activeTab === 'product-name'" [class.active]="activeTab === 'product-name'" (click)="activeTab = 'product-name'">Add Product Name</button>
     </div>
 
     <div class="tab-content" *ngIf="activeTab === 'list'" role="tabpanel">
@@ -56,9 +55,8 @@
       (cancel)="cancelEdit()">
     </app-edit-sku>
 
-    <app-add-product-code *ngIf="activeTab === 'product-code'" role="tabpanel" (save)="addProductCode($event)"></app-add-product-code>
+    <app-add-product-code *ngIf="activeTab === 'product'" role="tabpanel" (save)="addProduct($event)"></app-add-product-code>
     <app-add-process *ngIf="activeTab === 'process'" role="tabpanel" (save)="addProcess($event)"></app-add-process>
     <app-add-category *ngIf="activeTab === 'category'" role="tabpanel" (save)="addCategory($event)"></app-add-category>
-    <app-add-product-name *ngIf="activeTab === 'product-name'" role="tabpanel" (save)="addProductName($event)"></app-add-product-name>
   </section>
 </section>

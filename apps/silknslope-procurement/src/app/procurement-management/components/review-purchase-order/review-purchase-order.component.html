@@ -1,0 +1,61 @@
+<section class="panel" aria-labelledby="review-purchase-order-title">
+  <header class="panel-header">
+    <div>
+      <p class="eyebrow">Order overview</p>
+      <h2 id="review-purchase-order-title">Review purchase orders</h2>
+      <p class="panel-description">Review the purchase orders created for suppliers.</p>
+    </div>
+    <span class="order-count">{{ orders.length }}</span>
+  </header>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Order</th>
+          <th scope="col">Supplier</th>
+          <th scope="col">Product code</th>
+          <th scope="col">Product</th>
+          <th scope="col">Process</th>
+          <th scope="col">Category</th>
+          <th scope="col">Weight (g)</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Batch number</th>
+          <th scope="col">Batch entry</th>
+          <th scope="col">Price (INR)</th>
+          <th scope="col">Delivery &amp; Misc Charge (INR)</th>
+          <th scope="col">Total Tax (INR)</th>
+          <th scope="col">Misc Charge (INR)</th>
+          <th scope="col">Total Procurement Cost (INR)</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (order of orders; track order.orderNumber) {
+          <tr>
+            <td class="order-number">{{ order.orderNumber }}</td>
+            <td>{{ order.supplier }}</td>
+            <td>{{ order.productCode }}</td>
+            <td>{{ order.productName }}</td>
+            <td>{{ order.process }}</td>
+            <td>{{ order.productCategory }}</td>
+            <td>{{ order.productWeight }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.batchNumber }}</td>
+            <td>{{ order.batchEntryDate | date: 'medium' }}</td>
+            <td>{{ order.price | number: '1.2-2' }}</td>
+            <td>{{ order.deliveryMiscCharge | number: '1.2-2' }}</td>
+            <td>{{ order.totalTax | number: '1.2-2' }}</td>
+            <td>{{ order.miscCharge | number: '1.2-2' }}</td>
+            <td>{{ order.totalProcurementCost | number: '1.2-2' }}</td>
+            <td><span class="status">{{ order.status }}</span></td>
+          </tr>
+        } @empty {
+          <tr>
+            <td class="empty-cell" colspan="16">Purchase orders will appear here after they are created.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
