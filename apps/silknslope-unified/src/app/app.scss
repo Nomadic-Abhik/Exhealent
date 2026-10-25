@@ -1,0 +1,128 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.workspace {
+  min-height: 100vh;
+  background: var(--color-page);
+  color: var(--color-text);
+}
+
+.topbar {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.75rem clamp(1rem, 4vw, 3.5rem);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand-mark {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border-radius: 0.8rem;
+  background: var(--color-brand);
+  color: #fff;
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.brand-copy {
+  display: grid;
+  gap: 0.12rem;
+}
+
+.brand-copy strong {
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.brand-copy small {
+  color: var(--color-muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.primary-nav {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.primary-nav a,
+.theme-toggle {
+  border: 0;
+  border-radius: 0.55rem;
+  background: transparent;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.65rem 0.8rem;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.primary-nav a:hover,
+.theme-toggle:hover {
+  background: var(--color-subtle);
+  color: var(--color-text);
+}
+
+.primary-nav a.active {
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+}
+
+.theme-toggle {
+  border: 1px solid var(--color-border);
+}
+
+.route-loading {
+  padding: 0.6rem clamp(1rem, 4vw, 3.5rem);
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+  font-size: 0.875rem;
+}
+
+.content {
+  width: min(100% - 2rem, 1440px);
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+
+@media (max-width: 900px) {
+  .topbar {
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+  }
+
+  .primary-nav {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .theme-toggle {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,4 @@
+@use '../../../libs/design-tokens/src/tokens';
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--color-page); color: var(--color-text); font-family: Inter, ui-sans-serif, system-ui, sans-serif; }

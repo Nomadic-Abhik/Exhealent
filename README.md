@@ -1,27 +1,53 @@
-# SilknSlope
+# SilknSlope Admin
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+Angular 20 workspace with a shell and three independently buildable Native Federation remotes:
 
-## Development server
+| Application | Workspace project | Local URL | Owns |
+| --- | --- | --- | --- |
+| Unified shell | `silknslope-unified` | `http://localhost:4200` | Global layout, navigation, theme, dashboard |
+| Procurement | `silknslope-procurement` | `http://localhost:4201` | Distributor management |
+| Inventory | `silknslope-inventory` | `http://localhost:4202` | Inventory and SKU management |
+| Orders | `silknslope-order` | `http://localhost:4203` | Empty-state placeholder |
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Local development
 
-## Code scaffolding
+Use a Node.js version supported by Angular 20 (Node 20.19+ or 22.12+).
+Start each app in its own terminal:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```sh
+npm run start:procurement
+npm run start:inventory
+npm run start:orders
+npm run start:unified
+```
 
-## Build
+The unified shell reads `apps/silknslope-unified/public/federation.manifest.json` at runtime. The checked-in
+manifest points at the local remote servers above. For another environment, provide a
+manifest with the same remote keys (`silknslopeProcurement`, `silknslopeInventory`,
+`silknslopeOrder`) and that environment's `remoteEntry.json` URLs as a deploy-time
+asset; no deployed URL is embedded in feature code or the shell routes.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Top-level URLs are `/dashboard`, `/procurement/**`, `/inventory/**`, and `/orders/**`.
+The inventory remote retains the original feature paths below its domain prefix:
+`/inventory/inventory-management` and `/inventory/sku-management`. The procurement
+remote serves distributor management at `/procurement/distributor-management`.
 
-## Running unit tests
+## Build and test
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```sh
+npm run build:all
+npm run test:all
+```
 
-## Running end-to-end tests
+Apps can also be verified or deployed independently with `ng build silknslope-unified`,
+`ng build silknslope-procurement`, `ng build silknslope-inventory`, or
+`ng build silknslope-order`. Federation entry and app files are emitted under `dist/`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Workspace libraries
 
-## Further help
+- `libs/design-tokens` defines CSS custom properties. The shell selects the theme;
+  remotes consume the inherited variables and include fallback values when served alone.
+- `libs/microfrontend-contracts` contains versioned unified-shell/remote integration metadata.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Federation tooling is `@angular-architects/native-federation` 20.3.x, the Angular 20
+compatible release line, using the Angular CLI application builder.

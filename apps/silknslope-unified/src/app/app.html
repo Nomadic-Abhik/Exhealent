@@ -1,0 +1,36 @@
+<div class="workspace">
+  <header class="topbar">
+    <a class="brand" routerLink="/dashboard" aria-label="SilknSlope Admin home">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span class="brand-copy">
+        <strong>SilknSlope</strong>
+        <small>ADMIN WORKSPACE</small>
+      </span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Main navigation">
+      @for (item of navigation; track item.path) {
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: item.exact ?? false }">
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <button class="theme-toggle" type="button" (click)="toggleTheme()">
+      {{ theme() === 'light' ? 'Dark theme' : 'Light theme' }}
+    </button>
+  </header>
+
+  @if (isNavigating()) {
+    <div class="route-loading" role="status" aria-live="polite">
+      Loading workspace…
+    </div>
+  }
+
+  <main class="content" id="main-content">
+    <router-outlet />
+  </main>
+</div>

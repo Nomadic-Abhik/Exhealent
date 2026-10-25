@@ -3,29 +3,41 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "ng serve silknslope-unified",
+    "start:unified": "ng serve silknslope-unified",
+    "start:procurement": "ng serve silknslope-procurement",
+    "start:inventory": "ng serve silknslope-inventory",
+    "start:orders": "ng serve silknslope-order",
+    "build": "ng build silknslope-unified",
+    "build:all": "ng build silknslope-unified && ng build silknslope-procurement && ng build silknslope-inventory && ng build silknslope-order",
+    "watch": "ng build silknslope-unified --watch --configuration development",
+    "test": "ng test silknslope-unified",
+    "test:all": "ng test silknslope-unified --watch=false --browsers=ChromeHeadless && ng test silknslope-procurement --watch=false --browsers=ChromeHeadless && ng test silknslope-inventory --watch=false --browsers=ChromeHeadless && ng test silknslope-order --watch=false --browsers=ChromeHeadless"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^16.0.0",
-    "@angular/common": "^16.0.0",
-    "@angular/compiler": "^16.0.0",
-    "@angular/core": "^16.0.0",
-    "@angular/forms": "^16.0.0",
-    "@angular/platform-browser": "^16.0.0",
-    "@angular/platform-browser-dynamic": "^16.0.0",
-    "@angular/router": "^16.0.0",
+    "@angular/animations": "^20.3.34",
+    "@angular/common": "^20.3.34",
+    "@angular/compiler": "^20.3.34",
+    "@angular/core": "^20.3.34",
+    "@angular/forms": "^20.3.34",
+    "@angular/platform-browser": "^20.3.34",
+    "@angular/platform-browser-dynamic": "^20.3.34",
+    "@angular/router": "^20.3.34",
+    "@softarc/native-federation-node": "^3.3.4",
+    "es-module-shims": "^1.5.12",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.13.0"
+    "zone.js": "~0.15.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^16.0.2",
-    "@angular/cli": "~16.0.2",
-    "@angular/compiler-cli": "^16.0.0",
+    "@angular-architects/native-federation": "^20.3.1",
+    "@angular-devkit/build-angular": "^20.3.41",
+    "@angular-devkit/core": "^20.3.41",
+    "@angular-devkit/schematics": "^20.3.41",
+    "@angular/build": "^20.3.41",
+    "@angular/cli": "~20.3.41",
+    "@angular/compiler-cli": "^20.3.34",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
@@ -33,6 +45,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~5.0.2"
+    "typescript": "~5.8.3"
   }
 }

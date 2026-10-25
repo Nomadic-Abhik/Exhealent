@@ -1,0 +1,5 @@
+{
+  "silknslopeProcurement": "http://localhost:4201/remoteEntry.json",
+  "silknslopeInventory": "http://localhost:4202/remoteEntry.json",
+  "silknslopeOrder": "http://localhost:4203/remoteEntry.json"
+}
